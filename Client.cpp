@@ -4,8 +4,15 @@
 
 #include <iostream>
 #include "Client.h"
+#include "Flight.h"
+#include "Cruise.h"
+#include "MixedTravel.h"
+
 using namespace std;
 void Client::registerTravel() {
+    int choice;
+    cout << "Please write id of travel you want to register" << endl;
+    cin >> choice;
 
 }
 
@@ -13,8 +20,10 @@ void Client::cancelRegistration() {
 
 }
 
-void Client::displayAllRegistration() {
-
+void Client::displayAllRegistrations() {
+    for ( auto &i : allRegistrations.getRegistrationContainer() ) {
+        cout << i.getId() << i.getTravelName() << endl;
+    }
 }
 
 void Client::leaveProgram() {
@@ -22,6 +31,7 @@ void Client::leaveProgram() {
 }
 
 void Client::prepareInterface() {
+    prepareSampleData();
     int choice;
     cout << "Choose what do you want: " << endl;
     cout << "Press: " << endl;
@@ -36,13 +46,14 @@ void Client::prepareInterface() {
                 leaveProgram();
                 break;
             case 1:
+                displayAllAvailableRegistrations();
                 registerTravel();
                 break;
             case 2:
                 cancelRegistration();
                 break;
             case 3:
-                displayAllRegistration();
+                displayAllRegistrations();
                 break;
             default:
                 cout << "Incorrect choice - try again";
@@ -54,4 +65,20 @@ void Client::prepareInterface() {
 
 Client::Client() {
     isProgramRunning = true;
+}
+
+void Client::displayAllAvailableRegistrations() {
+    for ( auto &i : allAvailableRegistrations.getRegistrationContainer() ) {
+        cout << i.getId() << i.getTravelName() << endl;
+    }
+}
+
+void Client::prepareSampleData() {
+    //    TODO: remove MOCKUP
+    Flight newFlight(1);
+    Cruise newCruise(2);
+    MixedTravel newMixedTravel(3);
+    allRegistrations.addToContainer(newFlight);
+    allRegistrations.addToContainer(newCruise);
+    allRegistrations.addToContainer(newMixedTravel);
 }

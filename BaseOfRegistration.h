@@ -5,21 +5,28 @@
 #ifndef FLY_REGISTRATION_BASE_H
 #define FLY_REGISTRATION_BASE_H
 
-//#include <bits/stl_vector.h>
-//using namespace std;
-//template <class T> class BaseOfRegistration
-//{
-//    private:
-//        vector<T> registrations;
-//    public:
-//        const vector<T> &getRegistrations() const {
-//            return registrations;
-//        }
-//
-//        void setRegistrations(const vector<T> &registrations) {
-//            BaseOfRegistration::registrations = registrations;
-//        }
-//};
+#include <cstdio>
+#include <vector>
+template <typename T> class BaseOfRegistration {
+private:
+    std::vector<T> registrationContainer;
+public:
+    void addToContainer(T element) {
+        registrationContainer.push_back(element);
+    }
+
+    void removeFromContainer(int index) {
+        registrationContainer.erase(registrationContainer.begin() + index);
+    }
+
+    const std::vector<T> &getRegistrationContainer() const {
+        return registrationContainer;
+    }
+
+    void setRegistrationContainer(const std::vector<T> &registrationContainer) {
+        BaseOfRegistration::registrationContainer = registrationContainer;
+    }
+};
 
 
 #endif //FLY_REGISTRATION_BASE_H

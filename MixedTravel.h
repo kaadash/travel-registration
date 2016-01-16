@@ -10,6 +10,8 @@
 
 class MixedTravel: public Travel {
 
+public:
+    MixedTravel(int id) : Travel(id) { }
 };
 
 

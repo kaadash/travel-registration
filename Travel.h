@@ -6,12 +6,22 @@
 #define FLY_REGISTRATION_TRAVEL_H
 
 
+#include <string>
+
+using namespace std;
 class Travel {
 private:
     enum travelType {FLIGHT, CRUISE, MIXED_TRAVEL};
     int id;
+    string travelName;
 
 public:
+    Travel(int id) : id(id) {
+        this->id = id;
+        this->travelName = generateName();
+    }
+
+    string generateName();
 
     int getId() const {
         return id;
@@ -19,6 +29,14 @@ public:
 
     void setId(int id) {
         Travel::id = id;
+    }
+
+    const string &getTravelName() const {
+        return travelName;
+    }
+
+    void setTravelName(const string &travelName) {
+        Travel::travelName = travelName;
     }
 };
 

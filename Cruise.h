@@ -10,6 +10,8 @@
 
 class Cruise: public Travel {
 
+public:
+    Cruise(int id) : Travel(id) { }
 };
 
 

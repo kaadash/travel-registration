@@ -10,6 +10,8 @@
 
 class Flight: public Travel{
 
+public:
+    Flight(int id) : Travel(id) { }
 };
 
 
