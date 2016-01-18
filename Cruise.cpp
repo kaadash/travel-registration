@@ -4,15 +4,19 @@
 
 #include "Cruise.h"
 
-//string Cruise::generateName() {
-//
-//    srand ((unsigned int) time(NULL));
-//    string travelNames [] = {
-//            "Travel of dream",
-//            "Travel of Love",
-//            "Travel of What You want"
-//    };
-//    int sizeOfArr = (int)sizeof(travelNames)/sizeof(travelNames[0]);
-//    int randomNameIndex = (rand() % sizeOfArr);
-//    return travelNames[randomNameIndex];
-//}
+string Cruise::generateName() {
+
+    srand ((unsigned int) time(NULL));
+    string travelNames [] = {
+            "Travel of dream",
+            "Travel of Love",
+            "Travel of What You want"
+    };
+    int sizeOfArr = (int)sizeof(travelNames)/sizeof(travelNames[0]);
+    int randomNameIndex = (rand() % sizeOfArr);
+    return travelNames[randomNameIndex];
+}
+
+Cruise::Cruise(int id)  : Travel(id) {
+    setTravelName(generateName());
+}

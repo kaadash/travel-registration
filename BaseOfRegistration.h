@@ -7,26 +7,31 @@
 
 #include <cstdio>
 #include <vector>
+#include "Flight.h"
+
+using namespace std;
 template <typename T> class BaseOfRegistration {
 private:
-    std::vector<T> registrationContainer;
+    vector<T*> registrationContainer;
+
 public:
-    void operator+=(const T &element) {
+    void operator+=(T *element) {
         registrationContainer.push_back(element);
     }
-
-    void operator-=(const int &index) {
+//
+    void operator-=(const int index) {
         registrationContainer.erase(registrationContainer.begin() + index);
     }
-
-    T getElement (int index) {
+//
+    T* getElement (int index) {
         return registrationContainer.at((unsigned long) index);
     }
-    const std::vector<T> &getRegistrationContainer() const {
+
+    const vector<T *> &getRegistrationContainer() const {
         return registrationContainer;
     }
 
-    void setRegistrationContainer(const std::vector<T> &registrationContainer) {
+    void setRegistrationContainer(const vector<T *> &registrationContainer) {
         BaseOfRegistration::registrationContainer = registrationContainer;
     }
 };

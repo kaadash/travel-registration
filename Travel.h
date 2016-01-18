@@ -18,10 +18,9 @@ private:
 public:
     Travel(int id) : id(id) {
         this->id = id;
-        this->travelName = generateName();
     }
 
-    string generateName();
+    virtual string generateName() = 0;
 
     int getId() const {
         return id;

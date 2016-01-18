@@ -11,8 +11,8 @@
 class Flight: public Travel{
 
 public:
-    Flight(int id) : Travel(id) { }
-//    string generateName();
+    Flight(int id);
+    string generateName();
 };
 
 

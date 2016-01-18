@@ -11,7 +11,7 @@
 class MixedTravel: public Travel {
 
 public:
-    MixedTravel(int id) : Travel(id) { }
+    MixedTravel(int id);
     string generateName();
 };
 

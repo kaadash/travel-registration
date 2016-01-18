@@ -15,9 +15,10 @@ void Client::registerTravel() {
     int choice;
     cout << "Please write id of travel from list, you want to register" << endl;
     cin >> choice;
-    Travel travelToRegister = allAvailableRegistrations.getElement(choice);
+    cout << allRegistrations.getElement(0)->getId();
+    Travel* travelToRegister = allAvailableRegistrations.getElement(choice);
     allUnavailableRegistrations += travelToRegister;
-    cout << "Success! You registered " << travelToRegister.getId() << " : " << travelToRegister.generateName();
+    cout << "Success! You registered " << travelToRegister->getId() << " : " << travelToRegister->generateName();
     allAvailableRegistrations -= choice;
 }
 
@@ -25,27 +26,27 @@ void Client::cancelRegistration() {
     int choice;
     cout << "Please write id of travel from list, you want to cancel" << endl;
     cin >> choice;
-    Travel travelToCancelRegister = allUnavailableRegistrations.getElement(choice);
+    Travel* travelToCancelRegister = allUnavailableRegistrations.getElement(choice);
     allAvailableRegistrations += travelToCancelRegister;
-    cout << "You cancel registration " << travelToCancelRegister.getId() << " : " << travelToCancelRegister.generateName();
+    cout << "You cancel registration " << travelToCancelRegister->getId() << " : " << travelToCancelRegister->generateName();
     allUnavailableRegistrations -= choice;
 }
 
 void Client::displayAllRegistrations() {
     for ( auto &i : allRegistrations.getRegistrationContainer() ) {
-        cout << i.getId() << i.getTravelName() << endl;
+        cout << i->getId() << i->getTravelName() << endl;
     }
 }
 
 void Client::displayAllAvailableRegistrations() {
     for ( auto &i : allAvailableRegistrations.getRegistrationContainer() ) {
-        cout << i.getId() << i.getTravelName() << endl;
+        cout << i->getId() << i->getTravelName() << endl;
     }
 }
 
 void Client::displayAllRegisteredTravel() {
     for ( auto &i : allUnavailableRegistrations.getRegistrationContainer() ) {
-        cout << i.getId() << i.getTravelName() << endl;
+        cout << i->getId() << i->getTravelName() << endl;
     }
 }
 
@@ -99,19 +100,19 @@ void Client::prepareSampleData() {
     //    TODO: remove MOCKUP
     for (int i = 0; i < 25; ++i) {
         if(i < 10) {
-            Flight newFlight(i);
-            allRegistrations+=newFlight;
-            allAvailableRegistrations+=newFlight;
+            Flight *newFlight = new Flight(i);
+            allRegistrations += newFlight;
+            allAvailableRegistrations += newFlight;
         }
         if(i >=10 && i < 20) {
-            Cruise newCruise(i+1);
-            allRegistrations+=(newCruise);
-            allAvailableRegistrations+=newCruise;
+            Cruise *newCruise = new Cruise(i) ;
+            allRegistrations += newCruise;
+            allAvailableRegistrations += newCruise;
         }
         if(i >= 20 ) {
-            MixedTravel newMixedTravel(i+2);
-            allRegistrations+=(newMixedTravel);
-            allAvailableRegistrations+=newMixedTravel;
+            MixedTravel *newMixedTravel = new MixedTravel(i);
+            allRegistrations += newMixedTravel;
+            allAvailableRegistrations += newMixedTravel;
         }
     }
 }
