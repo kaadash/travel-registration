@@ -16,3 +16,7 @@ string Travel::generateName() {
   int randomNameIndex = (rand() % sizeOfArr);
   return travelNames[randomNameIndex];
 }
+
+string Travel::toString() {
+  return "type is travel";
+}

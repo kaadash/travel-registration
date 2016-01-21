@@ -20,3 +20,7 @@ string MixedTravel::generateName() {
 MixedTravel::MixedTravel(int id)  : Travel(id) {
   setTravelName(generateName());
 }
+
+string MixedTravel::toString() {
+  return "Type is Mixed";
+}

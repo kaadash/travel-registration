@@ -9,10 +9,20 @@
 #include "Travel.h"
 
 class Cruise: public Travel {
+private:
+    int lengthOfCruise;
 
 public:
     Cruise(int id);
     string generateName();
+    int getLengthOfCruise() const {
+        return lengthOfCruise;
+    }
+
+    void setLengthOfCruise(int lengthOfCruise) {
+        Cruise::lengthOfCruise = lengthOfCruise;
+    }
+    string toString();
 };
 
 

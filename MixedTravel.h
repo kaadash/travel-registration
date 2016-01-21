@@ -10,9 +10,20 @@
 
 class MixedTravel: public Travel {
 
+private:
+    int timeToComeBack;
+
 public:
     MixedTravel(int id);
     string generateName();
+    int getTimeToComeBack() const {
+        return timeToComeBack;
+    }
+
+    void setTimeToComeBack(int timeToComeBack) {
+        MixedTravel::timeToComeBack = timeToComeBack;
+    }
+    string toString();
 };
 
 

@@ -37,6 +37,8 @@ public:
     void setTravelName(const string &travelName) {
         Travel::travelName = travelName;
     }
+//    it can be overload operator <<
+    virtual string toString();
 };
 
 

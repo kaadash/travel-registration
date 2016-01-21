@@ -8,9 +8,9 @@ string Cruise::generateName() {
 
     srand ((unsigned int) time(NULL));
     string travelNames [] = {
-            "Travel of dream",
-            "Travel of Love",
-            "Travel of What You want"
+            "Cruise of dream",
+            "Cruise of Love",
+            "Cruise of What You want"
     };
     int sizeOfArr = (int)sizeof(travelNames)/sizeof(travelNames[0]);
     int randomNameIndex = (rand() % sizeOfArr);
@@ -19,4 +19,8 @@ string Cruise::generateName() {
 
 Cruise::Cruise(int id)  : Travel(id) {
     setTravelName(generateName());
+}
+
+string Cruise::toString() {
+    return "Type is Cruise";
 }
