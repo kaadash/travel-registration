@@ -24,3 +24,7 @@ Cruise::Cruise(int id)  : Travel(id) {
 string Cruise::toString() {
     return "Type is Cruise";
 }
+
+Cruise::Cruise() {
+    setTravelName(generateName());
+}

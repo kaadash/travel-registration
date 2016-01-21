@@ -24,6 +24,8 @@ public:
         MixedTravel::timeToComeBack = timeToComeBack;
     }
     string toString();
+
+    MixedTravel();
 };
 
 

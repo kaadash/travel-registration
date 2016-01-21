@@ -20,3 +20,7 @@ string Travel::generateName() {
 string Travel::toString() {
   return "type is travel";
 }
+
+Travel::Travel() {
+
+}

@@ -23,6 +23,8 @@ public:
         Cruise::lengthOfCruise = lengthOfCruise;
     }
     string toString();
+
+    Cruise();
 };
 
 

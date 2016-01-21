@@ -10,10 +10,13 @@
 
 class Flight: public Travel {
 private:
+    string nameOfCaptain;
     int numberOfStaff;
 
 public:
     Flight(int id);
+    Flight();
+    string toString();
     string generateName();
     int getNumberOfStaff() const {
         return numberOfStaff;
@@ -22,7 +25,14 @@ public:
     void setNumberOfStaff(int numberOfStaff) {
         Flight::numberOfStaff = numberOfStaff;
     }
-    string toString();
+
+    const string &getNameOfCaptain() const {
+        return nameOfCaptain;
+    }
+
+    void setNameOfCaptain(const string &nameOfCaptain) {
+        Flight::nameOfCaptain = nameOfCaptain;
+    }
 };
 
 

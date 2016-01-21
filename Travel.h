@@ -11,7 +11,6 @@
 using namespace std;
 class Travel {
 private:
-    enum travelType {FLIGHT, CRUISE, MIXED_TRAVEL};
     int id;
     string travelName;
 
@@ -19,6 +18,7 @@ public:
     Travel(int id) : id(id) {
         this->id = id;
     }
+    Travel();
 
     virtual string generateName() = 0;
 

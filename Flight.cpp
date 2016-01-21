@@ -24,3 +24,7 @@ Flight::Flight(int id)  : Travel(id) {
 string Flight::toString() {
     return "Type is Flight";
 }
+
+Flight::Flight() {
+    setTravelName(generateName());
+}

@@ -33,29 +33,32 @@ public:
     void prepareSampleData();
     void leaveProgram();
     void displayTip();
+    void saveToFile(BaseOfRegistration<Travel>, string);
+    void loadFromFile(string);
+    void saveAll();
     bool isIsProgramRunning() const {
         return isProgramRunning;
     }
 
-//    void setIsProgramRunning(bool isProgramRunning) {
-//        Client::isProgramRunning = isProgramRunning;
-//    }
-//
-//    const BaseOfRegistration<Travel> &getAllAvailableRegistrations() const {
-//        return allAvailableRegistrations;
-//    }
-//
-//    void setAllAvailableRegistrations(const BaseOfRegistration<Travel> &allAvailableRegistrations) {
-//        Client::allAvailableRegistrations = allAvailableRegistrations;
-//    }
-//
-//    const BaseOfRegistration<Travel> &getAllUnavailableRegistrations() const {
-//        return allUnavailableRegistrations;
-//    }
-//
-//    void setAllUnavailableRegistrations(const BaseOfRegistration<Travel> &allUnavailableRegistrations) {
-//        Client::allUnavailableRegistrations = allUnavailableRegistrations;
-//    }
+    void setIsProgramRunning(bool isProgramRunning) {
+        Client::isProgramRunning = isProgramRunning;
+    }
+
+    const BaseOfRegistration<Travel> &getAllAvailableRegistrations() const {
+        return allAvailableRegistrations;
+    }
+
+    void setAllAvailableRegistrations(const BaseOfRegistration<Travel> &allAvailableRegistrations) {
+        Client::allAvailableRegistrations = allAvailableRegistrations;
+    }
+
+    const BaseOfRegistration<Travel> &getAllUnavailableRegistrations() const {
+        return allUnavailableRegistrations;
+    }
+
+    void setAllUnavailableRegistrations(const BaseOfRegistration<Travel> &allUnavailableRegistrations) {
+        Client::allUnavailableRegistrations = allUnavailableRegistrations;
+    }
 };
 
 

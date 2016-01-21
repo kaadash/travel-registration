@@ -22,7 +22,11 @@ public:
     void operator-=(const int index) {
         registrationContainer.erase(registrationContainer.begin() + index);
     }
-//
+
+    T* getLastElement() {
+       return registrationContainer.back();
+    }
+
     T* getElement (int index) {
         return registrationContainer.at((unsigned long) index);
     }
