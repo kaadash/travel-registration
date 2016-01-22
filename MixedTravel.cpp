@@ -34,6 +34,6 @@ MixedTravel::MixedTravel(int id, int timeToComeBack, string travelName, string d
 }
 
 string MixedTravel::serializeClass() {
-  return ";m;;" + to_string(this->getId()) + ";;" + to_string(this->timeToComeBack) + ";;"
+  return "m;" + to_string(this->getId()) + ";;" + to_string(this->timeToComeBack) + ";;"
          + this->getTravelName() + ";;" + this->destinationNames + ";";
 }

@@ -29,7 +29,7 @@ public:
     void leaveProgram();
     void displayTip();
     void saveToFile(BaseOfRegistration<Travel>, string);
-    void loadFromFile(string, BaseOfRegistration<Travel>);
+    void loadFromFile(string, BaseOfRegistration<Travel>*);
     void saveAll();
     bool isIsProgramRunning() const {
         return isProgramRunning;

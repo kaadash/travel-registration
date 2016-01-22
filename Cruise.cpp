@@ -32,6 +32,6 @@ Cruise::Cruise(int id, int lengthOfTravel, string travelName) : Travel(id, trave
 }
 
 string Cruise::serializeClass() {
-    return ";c;;" + to_string(this->getId()) + ";;" + to_string(this->lengthOfCruise) + ";;"
+    return "c;" + to_string(this->getId()) + ";;" + to_string(this->lengthOfCruise) + ";;"
            + this->getTravelName() + ";";
 }

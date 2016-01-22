@@ -20,7 +20,15 @@ public:
     }
 //
     void operator-=(const int index) {
-        registrationContainer.erase(registrationContainer.begin() + index);
+        int iter = 0;
+        int indexToRemove = 0;
+        for ( auto &i : registrationContainer) {
+            if(i->getId() == index) {
+                indexToRemove = iter;
+            }
+            iter++;
+        }
+        registrationContainer.erase(registrationContainer.begin() + indexToRemove);
     }
 
     T* getLastElement() {
@@ -28,7 +36,15 @@ public:
     }
 
     T* getElement (int index) {
-        return registrationContainer.at((unsigned long) index);
+        int iter = 0;
+        int indexToRemove = 0;
+        for ( auto &i : registrationContainer) {
+            if(i->getId() == index) {
+                indexToRemove = iter;
+            }
+            iter++;
+        }
+        return registrationContainer.at((unsigned long) indexToRemove);
     }
 
     const vector<T *> &getRegistrationContainer() const {

@@ -36,7 +36,7 @@ Flight::Flight(int id, int numberOfStaff, string travelName, string captainName)
 }
 
 string Flight::serializeClass() {
-    return ";f;;" + to_string(this->getId()) + ";;" + to_string(this->numberOfStaff) + ";;"
+    return "f;" + to_string(this->getId()) + ";;" + to_string(this->numberOfStaff) + ";;"
             + this->getTravelName() + ";;" + this->getNameOfCaptain() + ";";
 
 }

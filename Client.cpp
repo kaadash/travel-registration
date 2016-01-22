@@ -16,10 +16,9 @@ void Client::registerTravel() {
     int choice;
     cout << "Please write id of travel from list, you want to register" << endl;
     cin >> choice;
-    cout << allRegistrations.getElement(0)->getId();
     Travel* travelToRegister = allAvailableRegistrations.getElement(choice);
     allUnavailableRegistrations += travelToRegister;
-    cout << "Success! You registered " << travelToRegister->getId() << " : " << travelToRegister->generateName();
+    cout << "Success! You registered " << travelToRegister->getId() << " : " << travelToRegister->getTravelName();
     allAvailableRegistrations -= choice;
     saveAll();
 }
@@ -30,7 +29,7 @@ void Client::cancelRegistration() {
     cin >> choice;
     Travel* travelToCancelRegister = allUnavailableRegistrations.getElement(choice);
     allAvailableRegistrations += travelToCancelRegister;
-    cout << "You cancel registration " << travelToCancelRegister->getId() << " : " << travelToCancelRegister->generateName();
+    cout << "You cancel registration " << travelToCancelRegister->getId() << " : " << travelToCancelRegister->getTravelName();
     allUnavailableRegistrations -= choice;
     saveAll();
 }
@@ -100,9 +99,9 @@ Client::Client() {
 }
 
 void Client::prepareSampleData() {
-    loadFromFile("serializedAllRegistrations", allRegistrations);
-    loadFromFile("serializedAvailableRegistrations", allAvailableRegistrations);
-    loadFromFile("serializedUnavailableRegistrations", allUnavailableRegistrations);
+    loadFromFile("serializedAllRegistrations", &allRegistrations);
+    loadFromFile("serializedAvailableRegistrations", &allAvailableRegistrations);
+    loadFromFile("serializedUnavailableRegistrations", &allUnavailableRegistrations);
 }
 
 void Client::saveToFile(BaseOfRegistration<Travel> baseContainer, string fileName) {
@@ -111,13 +110,14 @@ void Client::saveToFile(BaseOfRegistration<Travel> baseContainer, string fileNam
     for ( auto &i : baseContainer.getRegistrationContainer() ) {
         textToSave += i->serializeClass() + "\n";
     }
+    textToSave += '~';
     myfile.open ("/home/kadash/Prace/fly-registration/" + fileName + ".txt");
     myfile << textToSave;
     myfile.close();
 
 }
 // This method is ugly because it isn't universal/reusable and so on - hardcode, hardcode everywhere
-void Client::loadFromFile(string fileName, BaseOfRegistration<Travel> baseOfRegistration) {
+void Client::loadFromFile(string fileName, BaseOfRegistration<Travel> *baseOfRegistration) {
     char eachCharacter;
     char typeOfRegistration;
     char endOfFileSign = '~';
@@ -182,19 +182,18 @@ void Client::loadFromFile(string fileName, BaseOfRegistration<Travel> baseOfRegi
             if (eachCharacter == '\n' && !isEndOfFileSign){
                 switch (typeOfRegistration) {
                     case 'f':
-                        baseOfRegistration += new Flight(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
+                        *baseOfRegistration += new Flight(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
                         break;
                     case 'm':
-                        baseOfRegistration += new MixedTravel(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
+                        *baseOfRegistration += new MixedTravel(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
                         break;
                     case 'c':
-                        baseOfRegistration += new Cruise(id, secondPropertyValue, thirdPropertyName);
+                        *baseOfRegistration += new Cruise(id, secondPropertyValue, thirdPropertyName);
                         break;
                     default:
                         cout << "Bad type of registration";
                         break;
                 }
-                allAvailableRegistrations += baseOfRegistration.getLastElement();
                 counterOfObjects++;
                 wasNewLine = true;
                 propertyPointer = 0;
