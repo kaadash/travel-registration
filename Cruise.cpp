@@ -25,6 +25,6 @@ string Cruise::toString() {
     return "Type is Cruise";
 }
 
-Cruise::Cruise() {
-    setTravelName(generateName());
+Cruise::Cruise(int id, int lengthOfTravel, string travelName) : Travel(id, travelName) {
+    this->lengthOfCruise = lengthOfTravel;
 }

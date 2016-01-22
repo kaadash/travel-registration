@@ -12,10 +12,14 @@ class MixedTravel: public Travel {
 
 private:
     int timeToComeBack;
+    string destinationNames;
 
 public:
     MixedTravel(int id);
+
     string generateName();
+
+    MixedTravel(int, int, string, string);
     int getTimeToComeBack() const {
         return timeToComeBack;
     }
@@ -25,7 +29,13 @@ public:
     }
     string toString();
 
-    MixedTravel();
+    const string &getDestinationNames() const {
+        return destinationNames;
+    }
+
+    void setDestinationNames(const string &destinationNames) {
+        MixedTravel::destinationNames = destinationNames;
+    }
 };
 
 

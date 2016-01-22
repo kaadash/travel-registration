@@ -24,7 +24,7 @@ public:
     }
     string toString();
 
-    Cruise();
+    Cruise(int, int, string);
 };
 
 

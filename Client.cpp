@@ -162,6 +162,9 @@ void Client::loadFromFile(string fileName) {
                             case 2 :
                                 captainName = propertyText;
                                 break;
+                            case 3 :
+
+                                break;
                             default:
                                 cout << "error with property pointer";
                                 break;

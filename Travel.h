@@ -15,10 +15,16 @@ private:
     string travelName;
 
 public:
+    Travel();
+
     Travel(int id) : id(id) {
         this->id = id;
     }
-    Travel();
+
+    Travel(int id, string travelName) {
+        this->id = id;
+        this->travelName = travelName;
+    }
 
     virtual string generateName() = 0;
 

@@ -15,7 +15,7 @@ private:
 
 public:
     Flight(int id);
-    Flight();
+    Flight(int, int, string, string);
     string toString();
     string generateName();
     int getNumberOfStaff() const {

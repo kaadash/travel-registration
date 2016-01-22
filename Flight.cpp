@@ -25,6 +25,9 @@ string Flight::toString() {
     return "Type is Flight";
 }
 
-Flight::Flight() {
-    setTravelName(generateName());
+
+Flight::Flight(int id, int numberOfStaff, string travelName, string captainName) : Travel(id, travelName) {
+    this->nameOfCaptain = captainName;
+    this->numberOfStaff = numberOfStaff;
+    this->setTravelName(travelName);
 }

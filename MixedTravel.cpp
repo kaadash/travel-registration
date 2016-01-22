@@ -25,6 +25,7 @@ string MixedTravel::toString() {
   return "Type is Mixed";
 }
 
-MixedTravel::MixedTravel() {
-  setTravelName(generateName());
+MixedTravel::MixedTravel(int id, int timeToComeBack, string travelName, string destinationsName) : Travel(id, travelName) {
+  this->destinationNames = destinationsName;
+  this->timeToComeBack = timeToComeBack;
 }
