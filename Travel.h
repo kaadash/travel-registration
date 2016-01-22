@@ -26,6 +26,9 @@ public:
         this->travelName = travelName;
     }
 
+//    it can be overload operator <<
+    virtual string toString();
+    virtual string serializeClass();
     virtual string generateName() = 0;
 
     int getId() const {
@@ -39,12 +42,9 @@ public:
     const string &getTravelName() const {
         return travelName;
     }
-
     void setTravelName(const string &travelName) {
         Travel::travelName = travelName;
     }
-//    it can be overload operator <<
-    virtual string toString();
 };
 
 

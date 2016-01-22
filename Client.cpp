@@ -37,19 +37,19 @@ void Client::cancelRegistration() {
 
 void Client::displayAllRegistrations() {
     for ( auto &i : allRegistrations.getRegistrationContainer() ) {
-        cout << i->getId() << i->getTravelName() << endl;
+        cout << i->toString() << endl;
     }
 }
 
 void Client::displayAllAvailableRegistrations() {
     for ( auto &i : allAvailableRegistrations.getRegistrationContainer() ) {
-        cout << i->getId() << i->getTravelName() << endl;
+        cout << i->toString() << endl;
     }
 }
 
 void Client::displayAllRegisteredTravel() {
     for ( auto &i : allUnavailableRegistrations.getRegistrationContainer() ) {
-        cout << i->getId() << i->getTravelName() << endl;
+        cout << i->toString() << endl;
     }
 }
 
@@ -100,22 +100,24 @@ Client::Client() {
 }
 
 void Client::prepareSampleData() {
-    loadFromFile("serialized");
+    loadFromFile("serializedAllRegistrations", allRegistrations);
+    loadFromFile("serializedAvailableRegistrations", allAvailableRegistrations);
+    loadFromFile("serializedUnavailableRegistrations", allUnavailableRegistrations);
 }
 
 void Client::saveToFile(BaseOfRegistration<Travel> baseContainer, string fileName) {
     ofstream myfile;
     string textToSave;
     for ( auto &i : baseContainer.getRegistrationContainer() ) {
-        textToSave += i->toString() + "\n";
+        textToSave += i->serializeClass() + "\n";
     }
     myfile.open ("/home/kadash/Prace/fly-registration/" + fileName + ".txt");
     myfile << textToSave;
     myfile.close();
 
 }
-// This method is ugly because it isn't universal - hardcode everywhere
-void Client::loadFromFile(string fileName) {
+// This method is ugly because it isn't universal/reusable and so on - hardcode, hardcode everywhere
+void Client::loadFromFile(string fileName, BaseOfRegistration<Travel> baseOfRegistration) {
     char eachCharacter;
     char typeOfRegistration;
     char endOfFileSign = '~';
@@ -127,7 +129,8 @@ void Client::loadFromFile(string fileName) {
 
     int id = 0;
     int secondPropertyValue;
-    string captainName;
+    string thirdPropertyName;
+    string forthPropertyName;
     bool isEndOfFileSign = false;
 
     ifstream myfile ("/home/kadash/Prace/fly-registration/" + fileName + ".txt");
@@ -160,10 +163,10 @@ void Client::loadFromFile(string fileName) {
                                 secondPropertyValue = stoi(propertyText);
                                 break;
                             case 2 :
-                                captainName = propertyText;
+                                thirdPropertyName = propertyText;
                                 break;
                             case 3 :
-
+                                forthPropertyName = propertyText;
                                 break;
                             default:
                                 cout << "error with property pointer";
@@ -179,19 +182,19 @@ void Client::loadFromFile(string fileName) {
             if (eachCharacter == '\n' && !isEndOfFileSign){
                 switch (typeOfRegistration) {
                     case 'f':
-                        allRegistrations += new Flight(id);
+                        baseOfRegistration += new Flight(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
                         break;
                     case 'm':
-                        allRegistrations += new MixedTravel(id);
+                        baseOfRegistration += new MixedTravel(id, secondPropertyValue, thirdPropertyName, forthPropertyName);
                         break;
                     case 'c':
-                        allRegistrations += new Cruise(id);
+                        baseOfRegistration += new Cruise(id, secondPropertyValue, thirdPropertyName);
                         break;
                     default:
                         cout << "Bad type of registration";
                         break;
                 }
-                allAvailableRegistrations += allRegistrations.getLastElement();
+                allAvailableRegistrations += baseOfRegistration.getLastElement();
                 counterOfObjects++;
                 wasNewLine = true;
                 propertyPointer = 0;

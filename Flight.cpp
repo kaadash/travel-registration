@@ -22,7 +22,10 @@ Flight::Flight(int id)  : Travel(id) {
 }
 
 string Flight::toString() {
-    return "Type is Flight";
+    string textToDisplay = "id: " + to_string(this->getId()) + " travel name: "
+                           + this->getTravelName() + " number of staf: " + to_string(this->numberOfStaff)
+                           + " name of captain: " + this->nameOfCaptain;
+    return textToDisplay;
 }
 
 
@@ -30,4 +33,10 @@ Flight::Flight(int id, int numberOfStaff, string travelName, string captainName)
     this->nameOfCaptain = captainName;
     this->numberOfStaff = numberOfStaff;
     this->setTravelName(travelName);
+}
+
+string Flight::serializeClass() {
+    return ";f;;" + to_string(this->getId()) + ";;" + to_string(this->numberOfStaff) + ";;"
+            + this->getTravelName() + ";;" + this->getNameOfCaptain() + ";";
+
 }

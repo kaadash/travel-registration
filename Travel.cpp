@@ -24,3 +24,7 @@ string Travel::toString() {
 Travel::Travel() {
 
 }
+
+string Travel::serializeClass() {
+  return ";t;;" + to_string(this->id) + ";;" + this->travelName + ";";
+}

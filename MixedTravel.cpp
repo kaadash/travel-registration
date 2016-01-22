@@ -22,10 +22,18 @@ MixedTravel::MixedTravel(int id)  : Travel(id) {
 }
 
 string MixedTravel::toString() {
-  return "Type is Mixed";
+  string textToDisplay = "id: " + to_string(this->getId()) + " travel name: "
+                         + this->getTravelName() + " time to come back: " + to_string(this->timeToComeBack)
+                         + "days " + this->destinationNames;
+  return textToDisplay;
 }
 
 MixedTravel::MixedTravel(int id, int timeToComeBack, string travelName, string destinationsName) : Travel(id, travelName) {
   this->destinationNames = destinationsName;
   this->timeToComeBack = timeToComeBack;
+}
+
+string MixedTravel::serializeClass() {
+  return ";m;;" + to_string(this->getId()) + ";;" + to_string(this->timeToComeBack) + ";;"
+         + this->getTravelName() + ";;" + this->destinationNames + ";";
 }

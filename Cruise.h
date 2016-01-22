@@ -23,7 +23,7 @@ public:
         Cruise::lengthOfCruise = lengthOfCruise;
     }
     string toString();
-
+    string serializeClass();
     Cruise(int, int, string);
 };
 

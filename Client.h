@@ -12,11 +12,6 @@
 
 class Client {
 private:
-//    friend class boost::serialization::access;
-//    template<class Archive> void serialize(Archive & ar,
-//                                           const unsigned int version) {
-//        ar & BOOST_SERIALIZATION_NVP(isProgramRunning);
-//    }
     bool isProgramRunning;
     BaseOfRegistration<Travel> allRegistrations;
     BaseOfRegistration<Travel> allAvailableRegistrations;
@@ -34,7 +29,7 @@ public:
     void leaveProgram();
     void displayTip();
     void saveToFile(BaseOfRegistration<Travel>, string);
-    void loadFromFile(string);
+    void loadFromFile(string, BaseOfRegistration<Travel>);
     void saveAll();
     bool isIsProgramRunning() const {
         return isProgramRunning;

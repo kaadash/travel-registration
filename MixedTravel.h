@@ -16,7 +16,7 @@ private:
 
 public:
     MixedTravel(int id);
-
+    string serializeClass();
     string generateName();
 
     MixedTravel(int, int, string, string);

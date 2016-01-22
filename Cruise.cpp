@@ -22,9 +22,16 @@ Cruise::Cruise(int id)  : Travel(id) {
 }
 
 string Cruise::toString() {
-    return "Type is Cruise";
+    string textToDisplay = "id: " + to_string(this->getId()) + " travel name:  "
+                           + this->getTravelName() + " length of travel in km " + to_string(this->lengthOfCruise);
+    return textToDisplay;
 }
 
 Cruise::Cruise(int id, int lengthOfTravel, string travelName) : Travel(id, travelName) {
     this->lengthOfCruise = lengthOfTravel;
+}
+
+string Cruise::serializeClass() {
+    return ";c;;" + to_string(this->getId()) + ";;" + to_string(this->lengthOfCruise) + ";;"
+           + this->getTravelName() + ";";
 }

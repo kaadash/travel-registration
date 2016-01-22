@@ -17,6 +17,7 @@ public:
     Flight(int id);
     Flight(int, int, string, string);
     string toString();
+    string serializeClass();
     string generateName();
     int getNumberOfStaff() const {
         return numberOfStaff;
