@@ -111,6 +111,7 @@ void Client::saveToFile(BaseOfRegistration<Travel> baseContainer, string fileNam
         textToSave += i->serializeClass() + "\n";
     }
     textToSave += '~';
+//    Proszę zmienić na ścieżkę relatywną lub lokalną do projektu
     myfile.open ("/home/kadash/Prace/fly-registration/" + fileName + ".txt");
     myfile << textToSave;
     myfile.close();
@@ -132,7 +133,7 @@ void Client::loadFromFile(string fileName, BaseOfRegistration<Travel> *baseOfReg
     string thirdPropertyName;
     string forthPropertyName;
     bool isEndOfFileSign = false;
-
+//    Proszę zmienić na ścieżkę relatywną lub lokalną do projektu
     ifstream myfile ("/home/kadash/Prace/fly-registration/" + fileName + ".txt");
     if (myfile.is_open())
     {

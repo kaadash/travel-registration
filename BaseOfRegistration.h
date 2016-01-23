@@ -7,6 +7,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <iostream>
 #include "Flight.h"
 
 using namespace std;
@@ -36,15 +37,24 @@ public:
     }
 
     T* getElement (int index) {
+        bool indexFound = false;
         int iter = 0;
-        int indexToRemove = 0;
-        for ( auto &i : registrationContainer) {
-            if(i->getId() == index) {
-                indexToRemove = iter;
+        int indexToChoose = 0;
+        while(!indexFound) {
+            for ( auto &i : registrationContainer) {
+                if(i->getId() == index) {
+                    indexToChoose = iter;
+                    indexFound = true;
+                }
+                iter++;
             }
-            iter++;
+            if(!indexFound) {
+                iter = 0;
+                cout << "Please check if this id of travel exists and try again" << endl;
+                cin >> index;
+            }
         }
-        return registrationContainer.at((unsigned long) indexToRemove);
+        return registrationContainer.at((unsigned long) indexToChoose);
     }
 
     const vector<T *> &getRegistrationContainer() const {
